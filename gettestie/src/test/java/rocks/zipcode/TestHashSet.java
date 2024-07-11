@@ -2,53 +2,49 @@ package rocks.zipcode;
 
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
 
 import static org.junit.Assert.*;
 
 public class TestHashSet {
 
     @Test
-    public void testHashMap() {
-        Map<String, Integer> map = new HashMap<>();
+    public void testHashSet() {
+        Set<Person> set = new HashSet<>();
 
-        //HashMap == methods such as "put" "get" "containsKey" "remove" "size"
+        //Hash set == methods "add" "contains" "remove" "isEmpty"
 
-        //Testing Put and Get
-        map.put("one", 1);
-        assertEquals(Integer.valueOf(1), map.get("one"));
+        //Test add and contains
+        Person person1 = new Person("Jonny", 1996);
+        Person person2 = new Person("Sarah", 1992);
+        set.add(person1);
+        set.add(person2);
+        assertTrue(set.contains(person1));
 
-        //Testing ContainsKey
-        assertTrue(map.containsKey("one"));
+        //Test remove
+        set.remove(person1);
+        assertFalse(set.contains(person1));
 
-        //Testing remove
-        map.remove("one");
-        assertFalse(map.containsKey("one"));
-
-        //Test size
-        assertEquals(0, map.size());
+        //Test isEmpty
+        assertEquals(1, set.size());
     }
 
     @Test
-    public void testHashMap2() {
-        Map<String, Integer> map = new HashMap<>();
+    public void testHashSet2() {
+        Set<String> set = new HashSet<>();
 
-        //HashMap == methods such as "put" "get" "containsKey" "remove" "size"
+        //Hash set == methods "add" "contains" "remove" "isEmpty"
 
-        //Testing Put and Get
-        map.put("eighty-eight", 88);
-        assertEquals(Integer.valueOf(88), map.get("eighty-eight"));
+        //Test add and contains
+        set.add("peanut butter");
+        assertTrue(set.contains("peanut butter"));
 
-        //Testing ContainsKey
-        assertTrue(map.containsKey("eighty-eight"));
+        //Test remove
+        set.remove("peanut butter");
+        assertFalse(set.contains("peanut butter"));
 
-        //Testing remove
-        map.remove("eighty-eight");
-        assertFalse(map.containsKey("eighty-eight"));
-
-        //Test size
-        assertEquals(0, map.size());
+        //Test isEmpty
+        assertTrue(set.isEmpty());
     }
-
 }
